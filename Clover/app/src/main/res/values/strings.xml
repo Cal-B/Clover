@@ -289,6 +289,7 @@ If the pattern matches then the post can be hidden or highlighted.<br>
     <string name="reply_comment_thread">Comment reply</string>
     <string name="reply_comment_board">Comment new thread</string>
     <string name="reply_file_name">File name</string>
+    <string name="reply_upload_url">Image Upload URL (*.png, *.jpg, etc)</string>
     <string name="reply_file_too_big">Warning: File size too big (%1$s / %2$s)</string>
     <string name="reply_webm_too_big">Warning: WebM size too big (%1$s / %2$s)</string>
     <string name="reply_file_open_failed">Failed to open file</string>

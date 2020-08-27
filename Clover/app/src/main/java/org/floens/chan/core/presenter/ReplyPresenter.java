@@ -78,6 +78,7 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
     private boolean moreOpen;
     private boolean previewOpen;
     private boolean pickingFile;
+    private boolean uploadURLOpen;
     private int selectedQuote = -1;
 
     @Inject
@@ -191,6 +192,20 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
             }
         }
     }
+
+    public void onAttachFromURLClicked() {
+            if (uploadURLOpen) {
+                callback.openUploadURL(false, null);
+                draft.file = null;
+                draft.fileName = "";
+                uploadURLOpen = false;
+            } else {
+
+
+//            callback.getImagePickDelegate().pick(this);
+//            pickingFile = true;
+            }
+        }
 
     public void onSubmitClicked() {
         callback.loadViewsIntoDraft(draft);
@@ -389,6 +404,7 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
     private void closeAll() {
         moreOpen = false;
         previewOpen = false;
+        uploadURLOpen = false;
         selectedQuote = -1;
         callback.openMessage(false, true, "", false);
         callback.setExpanded(false);
@@ -397,6 +413,7 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
         callback.openCommentSpoilerButton(false);
         callback.openNameOptions(false);
         callback.openFileName(false);
+        callback.openUploadURL(false, null);
         callback.openSpoiler(false, false);
         callback.openPreview(false, null);
         callback.openPreviewMessage(false, null);
@@ -458,6 +475,13 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
         }
     }
 
+    private void showUploadURL(String url, File file){
+        callback.openUploadURL(true, file);
+
+        callback.setUploadURL(url);
+        uploadURLOpen = true;
+    }
+
     private void showPreview(String name, File file) {
         callback.openPreview(true, file);
         if (moreOpen) {
@@ -516,6 +540,10 @@ public class ReplyPresenter implements AuthenticationLayoutCallback, ImagePickDe
         void openFileName(boolean open);
 
         void setFileName(String fileName);
+
+        void openUploadURL(boolean show, File previewFile);
+
+        void setUploadURL(String url);
 
         void updateCommentCount(int count, int maxCount, boolean over);
 

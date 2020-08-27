@@ -95,6 +95,7 @@ public class ReplyLayout extends LoadView implements
     private EditText subject;
     private EditText options;
     private EditText fileName;
+    private EditText uploadURL;
     private LinearLayout nameOptions;
     private ViewGroup commentButtons;
     private Button commentQuoteButton;
@@ -105,6 +106,7 @@ public class ReplyLayout extends LoadView implements
     private ImageView preview;
     private TextView previewMessage;
     private ImageView attach;
+    private ImageView attachFromURL;
     private ImageView more;
     private ImageView submit;
     private DropdownArrowDrawable moreDropdown;
@@ -146,6 +148,7 @@ public class ReplyLayout extends LoadView implements
         subject = replyInputLayout.findViewById(R.id.subject);
         options = replyInputLayout.findViewById(R.id.options);
         fileName = replyInputLayout.findViewById(R.id.file_name);
+        uploadURL = replyInputLayout.findViewById(R.id.upload_url);
         nameOptions = replyInputLayout.findViewById(R.id.name_options);
         commentButtons = replyInputLayout.findViewById(R.id.comment_buttons);
         commentQuoteButton = replyInputLayout.findViewById(R.id.comment_quote);
@@ -156,6 +159,7 @@ public class ReplyLayout extends LoadView implements
         preview = replyInputLayout.findViewById(R.id.preview);
         previewMessage = replyInputLayout.findViewById(R.id.preview_message);
         attach = replyInputLayout.findViewById(R.id.attach);
+        attachFromURL = replyInputLayout.findViewById(R.id.attach_from_url);
         more = replyInputLayout.findViewById(R.id.more);
         submit = replyInputLayout.findViewById(R.id.submit);
 
@@ -178,6 +182,10 @@ public class ReplyLayout extends LoadView implements
         theme().imageDrawable.apply(attach);
         setRoundItemBackground(attach);
         attach.setOnClickListener(this);
+
+        theme().imageSearchDrawable.apply(attachFromURL);
+        setRoundItemBackground(attachFromURL);
+        attachFromURL.setOnClickListener(this);
 
         theme().sendDrawable.apply(submit);
         setRoundItemBackground(submit);
@@ -239,6 +247,8 @@ public class ReplyLayout extends LoadView implements
             presenter.onMoreClicked();
         } else if (v == attach) {
             presenter.onAttachClicked();
+        } else if (v == attachFromURL) {
+            presenter.onAttachFromURLClicked();
         } else if (v == submit) {
             presenter.onSubmitClicked();
         } else if (v == captchaHardReset) {
@@ -470,6 +480,27 @@ public class ReplyLayout extends LoadView implements
     @Override
     public void setFileName(String name) {
         fileName.setText(name);
+    }
+
+    @Override
+    public void openUploadURL(boolean show, File previewFile) {
+        if (show) {
+            theme().clearDrawable.apply(attachFromURL);
+        } else {
+            theme().imageSearchDrawable.apply(attachFromURL);
+        }
+
+        if (show) {
+            //ImageDecoder.decodeFileOnBackgroundThread(previewFile, dp(400), dp(300), this);
+        } else {
+            uploadURL.setVisibility(View.GONE);
+        }
+        uploadURL.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void setUploadURL(String url) {
+        uploadURL.setText(url);
     }
 
     @SuppressLint("SetTextI18n")

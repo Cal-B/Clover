@@ -29,6 +29,7 @@ public class DarkTheme extends Theme {
         super.resolveDrawables();
         settingsDrawable = new ThemeDrawable(R.drawable.ic_settings_white_24dp, 1f);
         imageDrawable = new ThemeDrawable(R.drawable.ic_image_white_24dp, 1f);
+        imageSearchDrawable = new ThemeDrawable(R.drawable.baseline_image_search_white_24, 1f);
         sendDrawable = new ThemeDrawable(R.drawable.ic_send_white_24dp, 1f);
         clearDrawable = new ThemeDrawable(R.drawable.ic_clear_white_24dp, 1f);
         backDrawable = new ThemeDrawable(R.drawable.ic_arrow_back_white_24dp, 1f);

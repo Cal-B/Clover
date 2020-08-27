@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -102,7 +103,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     android:imeActionLabel="@string/reply_submit"
                     android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
                     android:maxLines="6"
-                    android:minHeight="107dp"
+                    android:minHeight="145dp"
                     android:textSize="16sp" />
 
                 <TextView
@@ -183,6 +184,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 android:textSize="16sp"
                 android:visibility="gone" />
 
+            <EditText
+                android:id="@+id/upload_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/reply_upload_url"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -200,6 +210,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
             <ImageView
                 android:id="@+id/attach"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp" />
+
+            <ImageView
+                android:id="@+id/attach_from_url"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:padding="6dp" />

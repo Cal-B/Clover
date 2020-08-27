@@ -63,6 +63,7 @@ public class Theme {
 
     public ThemeDrawable settingsDrawable;
     public ThemeDrawable imageDrawable;
+    public ThemeDrawable imageSearchDrawable;
     public ThemeDrawable sendDrawable;
     public ThemeDrawable clearDrawable;
     public ThemeDrawable backDrawable;
@@ -86,6 +87,7 @@ public class Theme {
     public void resolveDrawables() {
         settingsDrawable = new ThemeDrawable(R.drawable.ic_settings_black_24dp, 0.54f);
         imageDrawable = new ThemeDrawable(R.drawable.ic_image_black_24dp, 0.54f);
+        imageSearchDrawable = new ThemeDrawable(R.drawable.baseline_image_search_black_24, 0.54f);
         sendDrawable = new ThemeDrawable(R.drawable.ic_send_black_24dp, 0.54f);
         clearDrawable = new ThemeDrawable(R.drawable.ic_clear_black_24dp, 0.54f);
         backDrawable = new ThemeDrawable(R.drawable.ic_arrow_back_black_24dp, 0.54f);
